@@ -342,16 +342,6 @@ IF (LumiverseCore_PYTHON_BINDINGS OR LumiverseCore_CSHARP_BINDINGS OR LumiverseC
 	SET_SOURCE_FILES_PROPERTIES(LumiverseCore.i PROPERTIES CPLUSPLUS ON)
 	SET_SOURCE_FILES_PROPERTIES(LumiverseCore.i PROPERTIES SWIG_FLAGS "")
 	
-	IF (LumiverseCore_PYTHON_BINDINGS)
-		MESSAGE("Including python bindings...")
-		FIND_PACKAGE(PythonLibs)
-		INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
-
-		SWIG_ADD_MODULE(lumiversepython python ${LUMIVERSE_CORE_SOURCE} ${LUMIVERSE_SHOW_CONTROL_SOURCE} LumiverseCore.i)
-
-		SWIG_LINK_LIBRARIES(lumiversepython ${PYTHON_LIBRARY} ${ACTIVE_LIBRARIES})
-	ENDIF (LumiverseCore_PYTHON_BINDINGS)
-
 	IF (LumiverseCore_CSHARP_BINDINGS)
 		MESSAGE("Including C# bindings...")
 		SWIG_ADD_MODULE(lumiversecsharp csharp ${LUMIVERSE_CORE_SOURCE} LumiverseCore.i)
